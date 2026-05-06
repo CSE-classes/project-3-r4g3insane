@@ -29,7 +29,9 @@ int readf(FILE *fp)
 	s1=fgets(s1, MAX, fp);
 	s2=fgets(s2, MAX, fp);
 	n1=strlen(s1);  /*length of s1*/
-	n2=strlen(s2)-1; /*length of s2*/
+	if(s1[n1-1] == '\n') n1--;  /* strip newline */
+	n2=strlen(s2);  /*length of s2*/
+	if(s2[n2-1] == '\n') n2--;  /* strip newline */
 	if(s1==NULL || s2==NULL || n1<n2)  /*when error exit*/
 		return -1;
 }
